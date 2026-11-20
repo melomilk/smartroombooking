@@ -1,0 +1,29 @@
+# Task 3 AFTER
+$ wc -l src/App.tsx src/components/DecisionPanel.tsx
+ 151 src/App.tsx
+  41 src/components/DecisionPanel.tsx
+ 192 total
+$ grep -n "decision.available\|panelState\|(() =>" src/App.tsx
+exit=1 (1 = none left in App.tsx)
+$ grep -n "decision.available\|state ===" src/components/DecisionPanel.tsx
+25:  const state = decision.available ? 'available' : 'unavailable';
+29:      <div className="decision-symbol">{state === 'available' ? <Check size={25} /> : <X size={25} />}</div>
+36:      {state === 'available' && (
+
+$ npm run test
+ Test Files  1 passed (1)
+      Tests  13 passed (13)
+exit=0
+$ npm run typecheck
+exit=0
+$ npm run lint
+exit=0
+$ npm run build
+✓ built in 1.90s
+exit=0
+
+$ (temporary equivalence test: old inline JSX from previous commit vs new DecisionPanel; files deleted after run)
+empty: identical=true length=575
+available: identical=true length=699
+unavailable: identical=true length=611
+      Tests  1 passed (1)

@@ -1,0 +1,15 @@
+# Task 3 BEFORE (commit 0ca966f)
+$ wc -l src/App.tsx
+179 src/App.tsx
+$ grep -c "decision.available\|panelState" src/App.tsx
+5
+$ grep -n "decision.available\|panelState\|(() =>" src/App.tsx
+126:          <div className={`decision-card ${decision ? (decision.available ? 'available' : 'unavailable') : 'empty'}`} aria-live="polite">
+134:            ) : (() => {
+135:                const panelState = decision.available ? 'available' : 'unavailable';
+138:                    <div className="decision-symbol">{decision.available ? <Check size={25} /> : <X size={25} />}</div>
+140:                      {panelState === 'available' ? 'Good to go' : 'A small change is needed'}
+147:                    {panelState === 'available' && (
+$ npm test
+ Test Files  1 passed (1)
+      Tests  13 passed (13)
