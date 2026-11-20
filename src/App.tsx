@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react';
 import {
   ArrowRight,
   CalendarDays,
-  Check,
   ChevronDown,
   Clock3,
   DoorOpen,
@@ -10,11 +9,11 @@ import {
   MapPin,
   Sparkles,
   Users,
-  X,
 } from 'lucide-react';
 import { currentTime, rooms, sampleSlots } from '@/data/rooms';
 import type { Decision } from '@/data/rooms';
 import { checkAvailability, formatTime, toMinutes } from '@/lib/availability';
+import { DecisionPanel } from '@/components/DecisionPanel';
 
 function App() {
   const [selectedRoomId, setSelectedRoomId] = useState(rooms[0].id);
@@ -123,34 +122,7 @@ function App() {
         </div>
 
         <aside className="side-column">
-          <div className={`decision-card ${decision ? (decision.available ? 'available' : 'unavailable') : 'empty'}`} aria-live="polite">
-            {!decision ? (
-              <>
-                <div className="decision-symbol waiting"><Clock3 size={23} /></div>
-                <span className="step-label">Your answer will appear here</span>
-                <h2>Ready when<br />you are.</h2>
-                <p>Set your room and time, then check to see a clear availability result.</p>
-              </>
-            ) : (() => {
-                const panelState = decision.available ? 'available' : 'unavailable';
-                return (
-                  <>
-                    <div className="decision-symbol">{decision.available ? <Check size={25} /> : <X size={25} />}</div>
-                    <span className="step-label">
-                      {panelState === 'available' ? 'Good to go' : 'A small change is needed'}
-                    </span>
-                    <h2>{decision.title}</h2>
-                    <p>{decision.message}</p>
-                    <div className="decision-details">
-                      {decision.details.map((detail) => <div key={detail}><span />{detail}</div>)}
-                    </div>
-                    {panelState === 'available' && (
-                      <p className="read-only-note">Availability is shown for reference only. This checker does not create reservations.</p>
-                    )}
-                  </>
-                );
-              })()}
-          </div>
+          <DecisionPanel decision={decision} />
 
           <div className="today-card">
             <div className="today-header"><span>Today in {selectedRoom.name}</span><CalendarDays size={16} /></div>
