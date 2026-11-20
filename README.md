@@ -31,6 +31,7 @@ npm run dev       # http://localhost:5173
 ```
 src/
   App.tsx                  UI: room picker, time inputs, today's bookings
+  App.test.tsx             Render test for the header clock label
   components/              UI pieces (decision panel)
   lib/availability.ts      Pure availability logic
   lib/availability.test.ts Unit tests

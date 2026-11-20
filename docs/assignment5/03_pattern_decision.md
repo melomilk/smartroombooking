@@ -54,10 +54,12 @@ App.tsx                                  App.tsx
 | `npm test` | 13 passed / 0 failed | 13 passed / 0 failed (AC1–AC5) |
 | `npm run typecheck` | exit 0 | exit 0 |
 | `npm run lint` | exit 0 | exit 0 |
-| `npm run build` | exit 0 | exit 0 |
+| `npm run build` | exit 0, 1570 modules, JS 155.51 kB | exit 0, **1571 modules** (+ `DecisionPanel.tsx`), JS 155.56 kB |
 | Rendered HTML of the panel (empty / available / unavailable) | — | **identical** to the old inline JSX in all 3 states |
 
 The last row comes from a temporary test. It rendered the old inline JSX (copied from the previous commit) and the new `DecisionPanel` with `react-dom/server`, then compared the strings. The temporary files were deleted afterwards; the output is in `evidence/task3_after.txt`.
+
+**Independent re-run:** all four checks repeated on Windows (npm 11.8.0) at commit `72a4b12` with the same results; screenshots in `evidence/screenshots/`.
 
 **AC6 (manual):** take a desktop and a mobile-width screenshot of the decision panel after the change and attach them.
 

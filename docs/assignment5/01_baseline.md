@@ -2,7 +2,7 @@
 
 **Repository:** https://github.com/melomilk/smartroombooking
 **Baseline commit:** `a2f8a69` (first commit containing the full source; earlier commits only held a ZIP)
-**Environment:** Node v22.23.5, npm 10.9.9, Linux; dependencies installed with `npm ci`
+**Environments:** (1) AI assistant run: Node v22.23.5, npm 10.9.9, Linux. (2) Own verification run: Windows 10 Command Prompt, npm 11.8.0 — screenshots in `evidence/screenshots/`. Dependencies installed with `npm ci` in both.
 **Raw output:** `evidence/baseline_checks.txt`, `evidence/baseline_evidence.txt`
 
 > Context: this repository was reused from Assignment #04. Files `RISK_REGISTER.md` (R-01…R-06), `SUBMISSION_READINESS.md` and the original `AGENTS.md` belong to Assignment #04. Assignment #05 work lives in `docs/assignment5/` and uses new finding IDs (A5-xx).
@@ -28,7 +28,7 @@
 | Install | `npm ci` | 319 packages installed |
 | Tests | `npm test` | **13 passed / 0 failed**, 1 file, exit 0 |
 | Type check | `npm run typecheck` | exit 0, no errors |
-| Lint | `npm run lint` | exit 0, no errors |
+| Lint | `npm run lint` | exit 0, no errors; on Windows it also prints a **warning: TypeScript 5.6.3 is not officially supported** by typescript-eslint (supported `>=4.7.4 <5.6.0`) |
 | Build | `npm run build` | exit 0, built in 1.86 s; warning: `caniuse-lite is outdated` |
 | Security audit | `npm audit` | **25 vulnerabilities (2 low, 7 moderate, 14 high, 2 critical)**, exit 1 |
 | Audit, runtime only | `npm audit --omit=dev` | **1 high: `ws` 8.18.3** |
@@ -59,6 +59,7 @@ AC6 from the original AGENTS.md (clear feedback on desktop and mobile) is checke
 | W6 | **Stale documentation.** Both A4 documents claim "12 tests passed"; 13 tests actually run. | `RISK_REGISTER.md:42`, `SUBMISSION_READINESS.md:47` vs `npm test` |
 | W7 | **AGENTS.md has gaps for agent use.** It has no setup steps and no rules on secrets, deployments, destructive commands or dependency changes. | `AGENTS.md` (full file) |
 | W8 | **No CI and outdated browser data.** No workflow runs the checks on push; build warns `caniuse-lite is outdated`. | no `.github/`; build output |
+| W9 | **Unsupported lint toolchain combination.** `typescript@5.6.3` is outside the range supported by `typescript-eslint@8.8.1` (`<5.6.0`), so lint results may be unreliable. Seen only in the Windows run; the Linux run printed no warning for the same versions. | Windows screenshot of `npm run lint`; `npm ls typescript typescript-eslint` |
 
 ### Assumptions (not verified)
 

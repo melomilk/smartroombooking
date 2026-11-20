@@ -51,7 +51,7 @@ function App() {
         <span className="brand-name">Campus<span>space</span></span>
         <div className="topbar-divider" />
         <span className="product-label">Room availability</span>
-        <div className="topbar-status"><span className="status-dot" /> Live campus hours</div>
+        <div className="topbar-status"><span className="status-dot" /> {`Demo time ${formatTime(currentTime)}`}</div>
       </header>
 
       <section className="intro-section">
