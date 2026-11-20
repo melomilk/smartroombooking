@@ -1,0 +1,16 @@
+# Task 7 — Mitigation M1 (A5-R1) — BEFORE fix, test added first
+$ git rev-parse --short HEAD -> e317534
+$ npm test
+ ✓ src/lib/availability.test.ts (13 tests) 5ms
+   × App header clock label (A5-R1 regression) > does not claim the hours are live 16ms
+     → expected '<main class="app-shell"><header class…' not to contain 'Live campus hours'
+   × App header clock label (A5-R1 regression) > states the fixed demo time taken from currentTime 10ms
+     → expected '<main class="app-shell"><header class…' to contain 'Demo time 10:30 AM'
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  src/App.test.tsx > App header clock label (A5-R1 regression) > does not claim the hours are live
+AssertionError: expected '<main class="app-shell"><header class…' not to contain 'Live campus hours'
+ FAIL  src/App.test.tsx > App header clock label (A5-R1 regression) > states the fixed demo time taken from currentTime
+AssertionError: expected '<main class="app-shell"><header class…' to contain 'Demo time 10:30 AM'
+ Test Files  1 failed | 1 passed (2)
+      Tests  2 failed | 13 passed (15)
+exit=1

@@ -1,0 +1,20 @@
+# Task 7 — final checks after both mitigations
+$ npm run test
+ ✓ src/lib/availability.test.ts (13 tests) 4ms
+ ✓ src/App.test.tsx (2 tests) 2ms
+ Test Files  2 passed (2)
+      Tests  15 passed (15)
+exit=0
+$ npm run typecheck
+exit=0
+$ npm run lint
+exit=0
+$ npm run build
+✓ 1571 modules transformed.
+dist/assets/index-CgUmiCCQ.js   155.56 kB │ gzip: 49.79 kB
+✓ built in 1.64s
+exit=0
+$ grep -lci "Live campus" dist/assets/*.js
+exit=1 (1 = gone from bundle)
+$ grep -c "Demo time" dist/assets/*.js
+1

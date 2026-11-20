@@ -1,0 +1,13 @@
+# Task 7 — Mitigation M2 (A5-R2) — BEFORE
+$ npm audit --omit=dev
+ws  8.0.0 - 8.20.1
+Severity: high
+ws: Uninitialized memory disclosure - https://github.com/advisories/GHSA-58qx-3vcg-4xpx
+ws: Memory exhaustion DoS from tiny fragments and data chunks - https://github.com/advisories/GHSA-96hv-2xvq-fx4p
+1 high severity vulnerability
+$ npm ls ws
+    `-- ws@8.18.3
+$ npm audit (all)
+25 vulnerabilities (2 low, 7 moderate, 14 high, 2 critical)
+$ npm ls --all | wc -l
+544

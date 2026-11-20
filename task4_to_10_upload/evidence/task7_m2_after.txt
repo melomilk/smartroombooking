@@ -1,0 +1,31 @@
+
+# Task 7 — Mitigation M2 (A5-R2) — AFTER: npm uninstall @supabase/supabase-js (approved by Milana Pak, 20 Nov 2026)
+$ git diff --stat package.json package-lock.json
+ package-lock.json | 128 +++---------------------------------------------------
+ package.json      |   1 -
+ 2 files changed, 7 insertions(+), 122 deletions(-)
+$ git diff package.json
+diff --git a/package.json b/package.json
+index 5dd72dd..4ec4803 100644
+--- a/package.json
++++ b/package.json
+@@ -12,7 +12,6 @@
+     "test": "vitest run"
+   },
+   "dependencies": {
+-    "@supabase/supabase-js": "^2.57.4",
+     "lucide-react": "^0.446.0",
+     "react": "^18.3.1",
+     "react-dom": "^18.3.1"
+$ npm audit --omit=dev
+found 0 vulnerabilities
+$ npm ls ws
+`-- (empty)
+$ npm audit (all)
+24 vulnerabilities (2 low, 7 moderate, 13 high, 2 critical)
+$ npm ls --all | wc -l
+523
+
+## Lockfile diff review
+Removed 13 entries: @supabase/{auth-js,functions-js,node-fetch,postgrest-js,realtime-js,storage-js,supabase-js}, @types/phoenix, @types/ws, tr46, webidl-conversions, whatwg-url, ws
+Added lines (7): "dev"/"optional"/"peer" flags on @types/node and undici-types (now only reachable via dev deps) + 1 integrity hash for ts-api-utils. 0 version changes.

@@ -1,0 +1,10 @@
+# Task 7 — Mitigation M1 (A5-R1) — AFTER fix
+$ git diff --stat
+ src/App.tsx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+$ npm test
+ ✓ src/lib/availability.test.ts (13 tests) 5ms
+ ✓ src/App.test.tsx (2 tests) 2ms
+ Test Files  2 passed (2)
+      Tests  15 passed (15)
+exit=0
